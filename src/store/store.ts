@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './slices/slice1';
+import profileSlice from '../store/slices/profileSlice'
+import contentSlice from '../store/slices/contentSlice'
+import assessmentSlice from '../store/slices/assessmentSlice'
+import notificationSlice from '../store/slices/notificationSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    
+    profile: profileSlice,
+    content: contentSlice,
+    assessment: assessmentSlice,
+    notifications: notificationSlice,
   },
 });
 
-// Export types for TypeScript
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

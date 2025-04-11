@@ -1,52 +1,23 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { 
-  Assessment, 
-  Question, 
-  AssessmentResult,
-  mockAssessments,
-  mockResults 
-} from '../../data/mockAssessment';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Assessment, AssessmentResult, mockAssessments } from '../../data/mockAssessment';
 
 interface AssessmentState {
   assessments: Assessment[];
   currentAssessment: Assessment | null;
-  currentQuestion: number;
-  answers: Record<string, string>;
-  timeRemaining: number;
-  isAssessmentActive: boolean;
   results: AssessmentResult[];
-  loading: boolean;
-  error: string | null;
+  currentQuestion: number;
+  userAnswers: Record<string, string>;
+  timeRemaining: number;
 }
 
 const initialState: AssessmentState = {
-  assessments: [],
+  assessments: mockAssessments,
   currentAssessment: null,
-  currentQuestion: 0,
-  answers: {},
-  timeRemaining: 0,
-  isAssessmentActive: false,
   results: [],
-  loading: false,
-  error: null
+  currentQuestion: 0,
+  userAnswers: {},
+  timeRemaining: 0,
 };
-
-
-export const fetchAssessments = createAsyncThunk<Assessment[]>(
-  'assessment/fetchAssessments',
-  async () => {   
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return mockAssessments;
-  }
-);
-
-export const fetchResults = createAsyncThunk<AssessmentResult[]>(
-  'assessment/fetchResults',
-  async () => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return mockResults;
-  }
-);
 
 const assessmentSlice = createSlice({
   name: 'assessment',
@@ -56,99 +27,53 @@ const assessmentSlice = createSlice({
       const assessment = state.assessments.find(a => a.id === action.payload);
       if (assessment) {
         state.currentAssessment = assessment;
+        state.timeRemaining = assessment.timeLimit * 60; // Convert to seconds
         state.currentQuestion = 0;
-        state.answers = {};
-        state.timeRemaining = assessment.timeLimit * 60; 
-        state.isAssessmentActive = true;
+        state.userAnswers = {};
       }
     },
+    
     answerQuestion: (state, action: PayloadAction<{ questionId: string; answer: string }>) => {
-      state.answers[action.payload.questionId] = action.payload.answer;
+      state.userAnswers[action.payload.questionId] = action.payload.answer;
     },
+    
     nextQuestion: (state) => {
-      if (state.currentAssessment && state.currentQuestion < state.currentAssessment.questions.length - 1) {
-        state.currentQuestion += 1;
-      }
-    },
-    previousQuestion: (state) => {
-      if (state.currentQuestion > 0) {
-        state.currentQuestion -= 1;
-      }
-    },
-    updateTimeRemaining: (state, action: PayloadAction<number>) => {
-      state.timeRemaining = action.payload;
-    },
-    submitAssessment: (state) => {
       if (state.currentAssessment) {
-        const score = calculateScore(state.currentAssessment, state.answers);
-        const id = state.currentAssessment.id;
-
-        state.assessments = state.assessments.map((assessment)=>{
-          if(assessment.id === id){
-            return {
-              ...assessment,
-              used:true,
-              score,
-            }
-          }else{
-            return assessment;
-          }
-        })
-
-        const result: AssessmentResult = {
-          id: `result${Date.now()}`,
-          assessmentId: state.currentAssessment.id,
-          userId: 'user1', 
-          score,
-          timeTaken: state.currentAssessment.timeLimit * 60 - state.timeRemaining,
-          completedAt: new Date().toISOString(),
-          answers: state.answers,
-          passed: false 
-        };
-        
-        result.passed = result.score >= state.currentAssessment.passingScore;
-        state.results.push(result);
-        state.isAssessmentActive = false;
+        state.currentQuestion = Math.min(
+          state.currentQuestion + 1,
+          state.currentAssessment.questions.length - 1
+        );
+      }
+    },
+    
+    previousQuestion: (state) => {
+      state.currentQuestion = Math.max(state.currentQuestion - 1, 0);
+    },
+    
+    updateTimer: (state) => {
+      if (state.timeRemaining > 0) {
+        state.timeRemaining -= 1;
+      }
+    },
+    
+    completeAssessment: (state, action: PayloadAction<AssessmentResult>) => {
+      if (state.currentAssessment) {
+        state.results.push(action.payload);
+        state.currentAssessment.used = true;
+        state.currentAssessment.score = action.payload.score;
         state.currentAssessment = null;
       }
-    }
+    },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchAssessments.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchAssessments.fulfilled, (state, action) => {
-        state.loading = false;
-        state.assessments = action.payload;
-      })
-      .addCase(fetchAssessments.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message || 'Failed to fetch assessments';
-      })
-      .addCase(fetchResults.fulfilled, (state, action) => {
-        state.results = action.payload;
-      });
-  }
 });
-
-const calculateScore = (assessment: Assessment, answers: Record<string, string>): number => {
-  const totalQuestions = assessment.questions.length;
-  const correctAnswers = assessment.questions.reduce((count, question) => {
-    return answers[question.id] === question.correctAnswer ? count + 1 : count;
-  }, 0);
-  
-  return Math.round((correctAnswers / totalQuestions) * 100);
-};
 
 export const {
   startAssessment,
   answerQuestion,
   nextQuestion,
   previousQuestion,
-  updateTimeRemaining,
-  submitAssessment
+  updateTimer,
+  completeAssessment,
 } = assessmentSlice.actions;
 
 export default assessmentSlice.reducer;

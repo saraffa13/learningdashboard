@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { 
-  FaBook, 
   FaGraduationCap, 
   FaUser, 
-  FaCog,
-  FaBars,
-  FaTimes 
 } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
@@ -14,11 +10,6 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    {
-      name: 'Content',
-      path: '/content',
-      icon: FaBook,
-    },
     {
       name: 'Assessment',
       path: '/assessment',
@@ -39,7 +30,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <h1 className="text-xl font-bold text-blue-600">Learning Dashboard</h1>
+              <Link to={'/'} className="text-xl font-bold text-blue-600">Learning Dashboard</Link>
             </div>
           </div>
 

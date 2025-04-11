@@ -80,11 +80,26 @@ const assessmentSlice = createSlice({
     },
     submitAssessment: (state) => {
       if (state.currentAssessment) {
+        const score = calculateScore(state.currentAssessment, state.answers);
+        const id = state.currentAssessment.id;
+
+        state.assessments = state.assessments.map((assessment)=>{
+          if(assessment.id === id){
+            return {
+              ...assessment,
+              used:true,
+              score,
+            }
+          }else{
+            return assessment;
+          }
+        })
+
         const result: AssessmentResult = {
           id: `result${Date.now()}`,
           assessmentId: state.currentAssessment.id,
           userId: 'user1', 
-          score: calculateScore(state.currentAssessment, state.answers),
+          score,
           timeTaken: state.currentAssessment.timeLimit * 60 - state.timeRemaining,
           completedAt: new Date().toISOString(),
           answers: state.answers,

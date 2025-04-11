@@ -74,13 +74,14 @@ const {
                 <span>Time: {assessment.timeLimit} minutes</span>
                 <span>Passing Score: {assessment.passingScore}%</span>
               </div>
-              <button
+              {assessment.used? <button className='red'>Already Taken</button>:<button
                 onClick={() => dispatch(startAssessment(assessment.id))}
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 
                   transition-colors duration-200"
               >
                 Start Assessment
-              </button>
+              </button>}
+              
             </div>
           ))}
         </div>

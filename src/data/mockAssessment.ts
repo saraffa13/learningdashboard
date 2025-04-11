@@ -17,6 +17,8 @@ export interface Question {
     questions: Question[];
     totalPoints: number;
     passingScore: number;
+    score:number;
+    used:boolean;
   }
   
   export const mockAssessments: Assessment[] = [
@@ -41,7 +43,7 @@ export interface Question {
           correctAnswer: 'All of the above',
           explanation: 'A React component is a reusable piece of UI that can be a JavaScript function or class that returns HTML (JSX).',
           category: 'Basics',
-          difficulty: 'easy'
+          difficulty: 'easy',
         },
         {
           id: 'q2',
@@ -55,7 +57,7 @@ export interface Question {
           correctAnswer: 'To manage state in functional components',
           explanation: 'useState is a Hook that allows you to add state to functional components.',
           category: 'Hooks',
-          difficulty: 'medium'
+          difficulty: 'medium',
         },
         {
           id: 'q3',
@@ -69,9 +71,11 @@ export interface Question {
           correctAnswer: 'A syntax extension for JavaScript',
           explanation: 'JSX is a syntax extension for JavaScript that looks similar to XML or HTML.',
           category: 'Basics',
-          difficulty: 'easy'
+          difficulty: 'easy',
         }
-      ]
+      ],
+      used:false,
+      score:0
     },
     {
       id: '2',
@@ -94,7 +98,7 @@ export interface Question {
           correctAnswer: 'To add static typing to JavaScript',
           explanation: 'TypeScript adds optional static typing to JavaScript to help catch errors early and improve IDE support.',
           category: 'Basics',
-          difficulty: 'easy'
+          difficulty: 'easy',
         },
         {
           id: 'q2',
@@ -108,9 +112,11 @@ export interface Question {
           correctAnswer: 'Static typing',
           explanation: 'TypeScript provides static typing, which helps in catching errors at compile time.',
           category: 'Features',
-          difficulty: 'medium'
+          difficulty: 'medium',
         }
-      ]
+      ],
+      used:false,
+      score:0
     },
     {
       id: '3',
@@ -133,7 +139,7 @@ export interface Question {
           correctAnswer: 'A function having access to the parent scope',
           explanation: 'A closure is a function that retains access to its parent scope, even after the parent function has closed.',
           category: 'Functions',
-          difficulty: 'hard'
+          difficulty: 'hard',
         },
         {
           id: 'q2',
@@ -147,9 +153,11 @@ export interface Question {
           correctAnswer: 'To refer to the current object',
           explanation: 'The "this" keyword refers to the object from which the function was called.',
           category: 'Objects',
-          difficulty: 'medium'
+          difficulty: 'medium',
         }
-      ]
+      ],
+      used:false,
+      score:0
     }
   ];
   

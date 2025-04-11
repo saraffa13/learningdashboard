@@ -29,11 +29,6 @@ const Navbar: React.FC = () => {
       path: '/profile',
       icon: FaUser,
     },
-    {
-      name: 'Settings',
-      path: '/settings',
-      icon: FaCog,
-    },
   ];
 
   const isActivePath = (path: string) => location.pathname === path;

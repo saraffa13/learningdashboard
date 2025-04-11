@@ -7,7 +7,7 @@ interface ContentCardProps {
 
 const ContentCard: React.FC<ContentCardProps> = ({ item }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden duration-300">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden duration-300 w-[85%] m-auto">
       <img 
         src={item.imageUrl} 
         alt={item.title} 

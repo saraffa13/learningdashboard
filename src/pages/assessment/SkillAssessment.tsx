@@ -154,7 +154,7 @@ const {
   };
 
   return (
-    <div className="p-4">
+    <div className="pt-4">
       <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold">

@@ -40,6 +40,46 @@ export interface ContentItem {
       level: 'Advanced',
       tags: ['Redux', 'React', 'State Management']
     },
+    {
+      id: '4',
+      title: 'Node.js for Beginners',
+      description: 'Get started with Node.js and build scalable network applications.',
+      category: 'Backend Development',
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm9kZWpzfGVufDB8fDB8fHw%3D',
+      duration: '2.5 hours',
+      level: 'Beginner',
+      tags: ['Node.js', 'JavaScript', 'Backend']
+    },
+    {
+      id: '5',
+      title: 'Python for Data Science',
+      description: 'Explore data science concepts using Python and popular libraries.',
+      category: 'Programming',
+      imageUrl: 'https://images.unsplash.com/photo-1581091870627-3a5a1f6a6c86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHl0aG9ufGVufDB8fDB8fHw%3D',
+      duration: '3.5 hours',
+      level: 'Intermediate',
+      tags: ['Python', 'Data Science', 'Machine Learning']
+    },
+    {
+      id: '6',
+      title: 'DevOps Fundamentals',
+      description: 'Learn the basics of DevOps and how to implement CI/CD pipelines.',
+      category: 'DevOps',
+      imageUrl: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGV2b3BzfGVufDB8fDB8fHw%3D',
+      duration: '4 hours',
+      level: 'Beginner',
+      tags: ['DevOps', 'CI/CD', 'Automation']
+    },
+    {
+      id: '7',
+      title: 'Advanced Machine Learning',
+      description: 'Dive deep into machine learning algorithms and model optimization.',
+      category: 'Machine Learning',
+      imageUrl: 'https://images.unsplash.com/photo-1581091012184-7c4a1a1a1a1a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHw%3D',
+      duration: '5 hours',
+      level: 'Advanced',
+      tags: ['Machine Learning', 'AI', 'Data Science']
+    }
   ];
   
   export const categories = [

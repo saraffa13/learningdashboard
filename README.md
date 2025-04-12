@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# Learning Dashboard
+A comprehensive learning management platform built with React, TypeScript, and Tailwind CSS. This dashboard provides an interactive interface for users to manage their learning journey, take assessments, and track their progress.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+- **Content Management**
+  - Organized learning materials
+  - Category-based content filtering
+  - Interactive content display in both card and list views
 
-In the project directory, you can run:
+- **Assessment System**
+  - Multiple choice questions
+  - Real-time progress tracking
+  - Detailed result analysis
+  - Timer functionality
+  - Score calculation and feedback
 
-### `npm start`
+- **Profile Management**
+  - Personal information management
+  - Educational background
+  - Professional details
+  - Social media integration
+  - Skills and interests tracking
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Responsive Design**
+  - Mobile-friendly interface
+  - Adaptive layout for different screen sizes
+  - Consistent user experience across devices
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend Framework**: React
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: Redux
+- **Routing**: React Router
+- **Icons**: React Icons
+- **Charts**: Chart.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

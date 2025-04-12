@@ -3,7 +3,6 @@ import { fetchContent, toggleViewMode, setSelectedCategories } from '../../store
 import ContentCard from './ContentCard';
 import { categories } from '../../data/mockData';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { Link } from 'react-router-dom';
 
 const ContentFeed: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +27,7 @@ const ContentFeed: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-700"></div>
       </div>
     );
@@ -58,8 +57,8 @@ const ContentFeed: React.FC = () => {
         </div>
       </div>
 
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Categories</h3>
+      <div className="mb-6 sm:px-8 px-0">
+        <h3 className="text-lg font-semibold mb-2 ">Categories</h3>
         <div className="flex flex-wrap gap-2">
           {categories.map(category => (
             <button
@@ -77,7 +76,7 @@ const ContentFeed: React.FC = () => {
       </div>
 
       <div id="content" className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Your Learning Feed</h2>
+        <h2 className="text-2xl font-bold sm:px-8 px-0">Your Learning Feed</h2>
         <button
           onClick={() => dispatch(toggleViewMode())}
           className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition-colors"

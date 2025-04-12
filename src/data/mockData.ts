@@ -55,7 +55,7 @@ export interface ContentItem {
       title: 'Python for Data Science',
       description: 'Explore data science concepts using Python and popular libraries.',
       category: 'Programming',
-      imageUrl: 'https://images.unsplash.com/photo-1581091870627-3a5a1f6a6c86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHl0aG9ufGVufDB8fDB8fHw%3D',
+      imageUrl: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D',
       duration: '3.5 hours',
       level: 'Intermediate',
       tags: ['Python', 'Data Science', 'Machine Learning']
@@ -75,7 +75,7 @@ export interface ContentItem {
       title: 'Advanced Machine Learning',
       description: 'Dive deep into machine learning algorithms and model optimization.',
       category: 'Machine Learning',
-      imageUrl: 'https://images.unsplash.com/photo-1581091012184-7c4a1a1a1a1a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHw%3D',
+      imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkD1SCydBqqftgAp-C-76EEEU0Wysqn6Ynpw&s',
       duration: '5 hours',
       level: 'Advanced',
       tags: ['Machine Learning', 'AI', 'Data Science']

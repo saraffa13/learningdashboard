@@ -5,7 +5,6 @@ import { useState } from "react";
 import { RootState } from "../../store/store";
 
 const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
-
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.profile);
 
@@ -20,19 +19,96 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
     socialLinks: { ...profile.socialLinks },
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    bio: '',
+    education: '',
+    occupation: '',
+    address: {
+      street: '',
+      city: '',
+      state: '',
+      zipCode: '',
+    },
+    socialLinks: {
+      linkedin: '',
+      github: '',
+      twitter: '',
+    },
+  });
+
+  const validate = () => {
+    let valid = true;
+    const newErrors = {
+      name: '',
+      email: '',
+      phone: '',
+      bio: '',
+      education: '',
+      occupation: '',
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zipCode: '',
+      },
+      socialLinks: {
+        linkedin: '',
+        github: '',
+        twitter: '',
+      },
+    };
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      valid = false;
+    }
+
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Valid email is required';
+      valid = false;
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+      valid = false;
+    }
+
+    if (!formData.bio.trim()) {
+      newErrors.bio = 'Bio is required';
+      valid = false;
+    }
+
+    if (!formData.education.trim()) {
+      newErrors.education = 'Education is required';
+      valid = false;
+    }
+
+    if (!formData.occupation.trim()) {
+      newErrors.occupation = 'Occupation is required';
+      valid = false;
+    }
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(updateProfile({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      bio: formData.bio,
-      education: formData.education,
-      occupation: formData.occupation,
-    }));
-    dispatch(updateAddress(formData.address));
-    dispatch(updateSocialLinks(formData.socialLinks));
-    setIsEditing(false);
+    if (validate()) {
+      dispatch(updateProfile({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        bio: formData.bio,
+        education: formData.education,
+        occupation: formData.occupation,
+      }));
+      dispatch(updateAddress(formData.address));
+      dispatch(updateSocialLinks(formData.socialLinks));
+      setIsEditing(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -40,7 +116,7 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
 
     if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setFormData((prev:any) => ({
+      setFormData((prev: any) => ({
         ...prev,
         [parent]: {
           ...(prev[parent]),
@@ -106,8 +182,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                   value={formData.name}
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
-                  required
+                  
                 />
+                {errors.name && <p className="text-red-500 text-xs italic">{errors.name}</p>}
               </div>
               <div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
@@ -117,8 +194,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                   value={formData.email}
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
-                  required
+                  
                 />
+                {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
               </div>
               <div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">Phone</label>
@@ -128,7 +206,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                   value={formData.phone}
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+                  
                 />
+                {errors.phone && <p className="text-red-500 text-xs italic">{errors.phone}</p>}
               </div>
               <div>
                 <label className="block text-gray-700 text-sm font-bold mb-2">Occupation</label>
@@ -138,7 +218,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                   value={formData.occupation}
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+                  
                 />
+                {errors.occupation && <p className="text-red-500 text-xs italic">{errors.occupation}</p>}
               </div>
             </div>
 
@@ -150,7 +232,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                 value={formData.education}
                 onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+                
               />
+              {errors.education && <p className="text-red-500 text-xs italic">{errors.education}</p>}
             </div>
 
             <div>
@@ -160,7 +244,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                 value={formData.bio}
                 onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-32"
+                
               />
+              {errors.bio && <p className="text-red-500 text-xs italic">{errors.bio}</p>}
             </div>
 
             <div>
@@ -174,7 +260,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     value={formData.address.street}
                     onChange={handleInputChange}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+                    
                   />
+                  {errors.address.street && <p className="text-red-500 text-xs italic">{errors.address.street}</p>}
                 </div>
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2">City</label>
@@ -184,7 +272,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     value={formData.address.city}
                     onChange={handleInputChange}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+
                   />
+                  {errors.address.city && <p className="text-red-500 text-xs italic">{errors.address.city}</p>}
                 </div>
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2">State</label>
@@ -194,7 +284,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     value={formData.address.state}
                     onChange={handleInputChange}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+
                   />
+                  {errors.address.state && <p className="text-red-500 text-xs italic">{errors.address.state}</p>}
                 </div>
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2">ZIP Code</label>
@@ -204,7 +296,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     value={formData.address.zipCode}
                     onChange={handleInputChange}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+
                   />
+                  {errors.address.zipCode && <p className="text-red-500 text-xs italic">{errors.address.zipCode}</p>}
                 </div>
               </div>
             </div>
@@ -221,7 +315,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     onChange={handleInputChange}
                     placeholder="LinkedIn URL"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+
                   />
+                  {errors.socialLinks.linkedin && <p className="text-red-500 text-xs italic">{errors.socialLinks.linkedin}</p>}
                 </div>
                 <div className="flex items-center">
                   <FaGithub className="mr-2" />
@@ -232,7 +328,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     onChange={handleInputChange}
                     placeholder="GitHub URL"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+
                   />
+                  {errors.socialLinks.github && <p className="text-red-500 text-xs italic">{errors.socialLinks.github}</p>}
                 </div>
                 <div className="flex items-center">
                   <FaTwitter className="mr-2" />
@@ -243,7 +341,9 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
                     onChange={handleInputChange}
                     placeholder="Twitter URL"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+
                   />
+                  {errors.socialLinks.twitter && <p className="text-red-500 text-xs italic">{errors.socialLinks.twitter}</p>}
                 </div>
               </div>
             </div>

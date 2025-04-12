@@ -72,20 +72,20 @@ const ContentFeed: React.FC = () => {
         </button>
       </div>
 
-      <div className={`grid gap-6 ${
+      <div className={`${
         viewMode === 'card' 
-          ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
-          : 'grid-cols-1'
+          ? 'grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
+          : 'flex flex-col gap-4'
       }`}>
         {filteredItems.map(item => (
-          <ContentCard key={item.id} item={item} />
+          <ContentCard key={item.id} item={item} viewMode={viewMode} />
         ))}
       </div>
 
       {filteredItems.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg">
-            Content doesn't matche your selected filters.
+            Content doesn't match your selected filters.
           </p>
         </div>
       )}

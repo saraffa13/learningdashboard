@@ -8,9 +8,8 @@ interface ContentCardProps {
 
 const ContentCard: React.FC<ContentCardProps> = ({ item, viewMode }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden duration-300 hover:shadow-lg ${
-      viewMode === 'card' ? 'w-full md:w-[85%] lg:w-[85%] m-auto' : 'flex items-center p-4'
-    }`}>
+    <div className={`bg-white rounded-lg shadow-md overflow-hidden duration-300 hover:shadow-lg ${viewMode === 'card' ? 'w-full md:w-[85%] lg:w-[85%] m-auto' : 'flex items-center p-4'
+      }`}>
       <img
         src={item.imageUrl}
         alt={item.title}
@@ -18,11 +17,10 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, viewMode }) => {
       />
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className={`text-sm px-2 py-1 rounded font-medium ${
-            item.level === 'Beginner' ? 'bg-green-100 text-green-800' :
-            item.level === 'Intermediate' ? 'bg-purple-100 text-purple-800' :
-            'bg-red-100 text-red-800'
-          }`}>
+          <span className={`text-sm px-2 py-1 rounded font-medium ${item.level === 'Beginner' ? 'bg-green-100 text-green-800' :
+              item.level === 'Intermediate' ? 'bg-purple-100 text-purple-800' :
+                'bg-red-100 text-red-800'
+            }`}>
             {item.level}
           </span>
           <span className="text-sm text-gray-500">{item.duration}</span>

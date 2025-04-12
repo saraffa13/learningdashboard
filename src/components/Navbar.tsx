@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { 
-  FaGraduationCap, 
-  FaUser, 
-  FaBars, 
+import {
+  FaGraduationCap,
+  FaUser,
+  FaBars,
 } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
@@ -41,11 +41,10 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`${
-                    isActivePath(item.path)
+                  className={`${isActivePath(item.path)
                       ? 'bg-purple-800 text-white'
                       : 'text-white hover:bg-purple-600'
-                  } px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors duration-200`}
+                    } px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors duration-200`}
                 >
                   {item.name}
                 </Link>
@@ -68,20 +67,18 @@ const Navbar: React.FC = () => {
       </div>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-        } sm:hidden`}
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+          } sm:hidden`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
-              className={`${
-                isActivePath(item.path)
+              className={`${isActivePath(item.path)
                   ? 'bg-purple-800 text-white'
                   : 'text-white hover:bg-purple-600'
-              } block px-3 py-2 rounded-md text-base font-medium flex items-center transition-colors duration-200`}
+                } block px-3 py-2 rounded-md text-base font-medium flex items-center transition-colors duration-200`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.name}

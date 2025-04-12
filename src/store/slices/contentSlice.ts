@@ -36,8 +36,8 @@ const contentSlice = createSlice({
     },
     setSelectedCategories: (state, action: PayloadAction<string[]>) => {
       state.selectedCategories = action.payload;
-      state.filteredItems = state.items.filter(item => 
-        state.selectedCategories.length === 0 || 
+      state.filteredItems = state.items.filter(item =>
+        state.selectedCategories.length === 0 ||
         state.selectedCategories.includes(item.category)
       );
     },

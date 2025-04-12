@@ -4,10 +4,7 @@ import {
     FaFacebook,
     FaTwitter,
     FaLinkedin,
-    FaGithub,
-    FaEnvelope,
-    FaPhone,
-    FaMapMarkerAlt
+    FaGithub
 } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
@@ -23,7 +20,7 @@ const Footer: React.FC = () => {
                                 About Learning Dashboard
                             </h3>
                             <p className="text-purple-100 text-sm">
-                               Platform to enhance your learning
+                                Platform to enhance your learning
                             </p>
                         </div>
 

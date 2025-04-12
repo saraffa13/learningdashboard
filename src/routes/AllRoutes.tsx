@@ -10,43 +10,43 @@ import NotFound from "../pages/error/NotFound";
 const AllRoutes = () => {
     const routes = createBrowserRouter([
         {
-            path:'/',
-            element:<Layout />,
-            children:[
+            path: '/',
+            element: <Layout />,
+            children: [
                 {
-                    index:true,
-                    element:<ContentFeed />
+                    index: true,
+                    element: <ContentFeed />
                 },
                 {
-                    path:'assessment',
+                    path: 'assessment',
                     children: [
                         {
                             index: true,
-                            element:<SkillAssessment />
+                            element: <SkillAssessment />
                         },
                         {
-                            path:':assessmentId',
-                            element:<Assessment />
+                            path: ':assessmentId',
+                            element: <Assessment />
                         },
                         {
-                            path:'result/:resultId',
-                            element:<AssessmentResult />
+                            path: 'result/:resultId',
+                            element: <AssessmentResult />
                         }
                     ]
                 },
                 {
-                    path:'content',
-                    element:<ContentFeed />
+                    path: 'content',
+                    element: <ContentFeed />
                 },
                 {
-                    path:'profile',
-                    element:<ProfileManager />
+                    path: 'profile',
+                    element: <ProfileManager />
                 }
             ]
         },
         {
-            path:'*',
-            element:<NotFound />
+            path: '*',
+            element: <NotFound />
         }
     ]);
 

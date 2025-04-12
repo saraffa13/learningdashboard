@@ -7,9 +7,9 @@ import ProfileEditor from './ProfileEditor';
 const Profile: React.FC = () => {
   const profile = useSelector((state: RootState) => state.profile);
   const [isEditing, setIsEditing] = useState(false);
-   
+
   if (isEditing) {
-   return <ProfileEditor setIsEditing={setIsEditing}/>
+    return <ProfileEditor setIsEditing={setIsEditing} />
   }
 
   return (

@@ -27,16 +27,16 @@ const assessmentSlice = createSlice({
       const assessment = state.assessments.find(a => a.id === action.payload);
       if (assessment) {
         state.currentAssessment = assessment;
-        state.timeRemaining = assessment.timeLimit * 60; // Convert to seconds
+        state.timeRemaining = assessment.timeLimit * 60;
         state.currentQuestion = 0;
         state.userAnswers = {};
       }
     },
-    
+
     answerQuestion: (state, action: PayloadAction<{ questionId: string; answer: string }>) => {
       state.userAnswers[action.payload.questionId] = action.payload.answer;
     },
-    
+
     nextQuestion: (state) => {
       if (state.currentAssessment) {
         state.currentQuestion = Math.min(
@@ -45,17 +45,17 @@ const assessmentSlice = createSlice({
         );
       }
     },
-    
+
     previousQuestion: (state) => {
       state.currentQuestion = Math.max(state.currentQuestion - 1, 0);
     },
-    
+
     updateTimer: (state) => {
       if (state.timeRemaining > 0) {
         state.timeRemaining -= 1;
       }
     },
-    
+
     completeAssessment: (state, action: PayloadAction<AssessmentResult>) => {
       if (state.currentAssessment) {
         state.results.push(action.payload);

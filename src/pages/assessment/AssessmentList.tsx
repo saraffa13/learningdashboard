@@ -13,8 +13,8 @@ const AssessmentList: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
       {assessments.map((assessment) => (
-        <div 
-          key={assessment.id} 
+        <div
+          key={assessment.id}
           className="bg-white border border-purple-100 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-purple-200"
         >
           <h2 className="text-2xl font-bold mb-2 text-purple-900">{assessment.title}</h2>

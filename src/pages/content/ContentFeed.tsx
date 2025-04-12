@@ -3,20 +3,21 @@ import { fetchContent, toggleViewMode, setSelectedCategories } from '../../store
 import ContentCard from './ContentCard';
 import { categories } from '../../data/mockData';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { Link } from 'react-router-dom';
 
 const ContentFeed: React.FC = () => {
-    const dispatch = useAppDispatch();
-    const { 
-      filteredItems, 
-      viewMode, 
-      loading, 
-      error,
-      selectedCategories 
-    } = useAppSelector(state => state.content);
-  
-    useEffect(() => {
-      dispatch(fetchContent());
-    }, [dispatch]);
+  const dispatch = useAppDispatch();
+  const {
+    filteredItems,
+    viewMode,
+    loading,
+    error,
+    selectedCategories
+  } = useAppSelector(state => state.content);
+
+  useEffect(() => {
+    dispatch(fetchContent());
+  }, [dispatch]);
 
   const handleCategoryToggle = (category: string) => {
     const newCategories = selectedCategories.includes(category)
@@ -42,7 +43,21 @@ const ContentFeed: React.FC = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4" >
+
+      <div className="relative bg-blue-500 text-white p-8 rounded-lg mb-8 shadow-lg">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20"></div>
+        <div className="relative z-10">
+          <h1 className="text-4xl font-extrabold mb-4">Welcome to Your Learning Hub</h1>
+          <p className="text-lg mb-6">
+            Discover a variety of content tailored to your interests. Use the categories below to filter content and find exactly what you're looking for.
+          </p>
+          <a href="#content" className="bg-white text-blue-600 font-semibold px-6 py-2 rounded-full shadow hover:bg-gray-100 transition-colors scroll-smooth" >
+            Get Started
+          </a>
+        </div>
+      </div>
+
       <div className="mb-6">
         <h3 className="text-lg font-semibold mb-2">Categories</h3>
         <div className="flex flex-wrap gap-2">
@@ -50,11 +65,10 @@ const ContentFeed: React.FC = () => {
             <button
               key={category}
               onClick={() => handleCategoryToggle(category)}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedCategories.includes(category)
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+              className={`px-3 py-1 rounded-full text-sm ${selectedCategories.includes(category)
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
             >
               {category}
             </button>
@@ -62,7 +76,7 @@ const ContentFeed: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mb-6">
+      <div id="content" className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Your Learning Feed</h2>
         <button
           onClick={() => dispatch(toggleViewMode())}
@@ -72,11 +86,10 @@ const ContentFeed: React.FC = () => {
         </button>
       </div>
 
-      <div className={`${
-        viewMode === 'card' 
-          ? 'grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
-          : 'flex flex-col gap-4'
-      }`}>
+      <div className={`${viewMode === 'card'
+        ? 'grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+        : 'flex flex-col gap-4'
+        }`}>
         {filteredItems.map(item => (
           <ContentCard key={item.id} item={item} viewMode={viewMode} />
         ))}

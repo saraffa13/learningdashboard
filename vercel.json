@@ -1,0 +1,7 @@
+{
+    "build": {
+      "env": {
+        "CUSTOM_INSTALL_COMMAND": "npm install --legacy-peer-deps"
+      }
+    }
+  }

@@ -29,7 +29,7 @@ const ContentFeed: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-700"></div>
       </div>
     );
   }
@@ -45,14 +45,14 @@ const ContentFeed: React.FC = () => {
   return (
     <div className="p-4" >
 
-      <div className="relative bg-blue-500 text-white p-8 rounded-lg mb-8 shadow-lg">
+      <div className="relative bg-purple-700 text-white p-8 rounded-lg mb-8 shadow-lg">
         <div className="absolute inset-0 bg-cover bg-center opacity-20"></div>
         <div className="relative z-10">
           <h1 className="text-4xl font-extrabold mb-4">Welcome to Your Learning Hub</h1>
           <p className="text-lg mb-6">
             Discover a variety of content tailored to your interests. Use the categories below to filter content and find exactly what you're looking for.
           </p>
-          <a href="#content" className="bg-white text-blue-600 font-semibold px-6 py-2 rounded-full shadow hover:bg-gray-100 transition-colors scroll-smooth" >
+          <a href="#content" className="bg-white text-purple-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-purple-50 transition-colors scroll-smooth" >
             Get Started
           </a>
         </div>
@@ -66,8 +66,8 @@ const ContentFeed: React.FC = () => {
               key={category}
               onClick={() => handleCategoryToggle(category)}
               className={`px-3 py-1 rounded-full text-sm ${selectedCategories.includes(category)
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? 'bg-purple-700 text-white'
+                : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
                 }`}
             >
               {category}
@@ -80,7 +80,7 @@ const ContentFeed: React.FC = () => {
         <h2 className="text-2xl font-bold">Your Learning Feed</h2>
         <button
           onClick={() => dispatch(toggleViewMode())}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+          className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition-colors"
         >
           {viewMode === 'card' ? 'Switch to List' : 'Switch to Cards'}
         </button>

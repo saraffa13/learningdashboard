@@ -25,12 +25,12 @@ const Navbar: React.FC = () => {
   const isActivePath = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-purple-700 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <Link to={'/'} className="text-xl font-bold text-blue-600">Learning Dashboard</Link>
+              <Link to={'/'} className="text-xl font-bold text-white">Learning Dashboard</Link>
             </div>
           </div>
 
@@ -42,8 +42,8 @@ const Navbar: React.FC = () => {
                   to={item.path}
                   className={`${
                     isActivePath(item.path)
-                      ? 'bg-blue-500 text-white'
-                      : 'text-gray-600 hover:bg-blue-50'
+                      ? 'bg-purple-800 text-white'
+                      : 'text-white hover:bg-purple-600'
                   } px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors duration-200`}
                 >
                   {item.name}
@@ -55,16 +55,11 @@ const Navbar: React.FC = () => {
           <div className="sm:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 
-                hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 
-                focus:ring-inset focus:ring-blue-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white 
+                hover:text-gray-200 hover:bg-purple-600 focus:outline-none focus:ring-2 
+                focus:ring-inset focus:ring-white"
             >
               <span className="sr-only">Open main menu</span>
-              {/* {isMobileMenuOpen ? (
-                <FaTimes className="block h-6 w-6" />
-              ) : (
-                <FaBars className="block h-6 w-6" />
-              )} */}
             </button>
           </div>
         </div>
@@ -78,12 +73,11 @@ const Navbar: React.FC = () => {
               to={item.path}
               className={`${
                 isActivePath(item.path)
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-600 hover:bg-blue-50'
+                  ? 'bg-purple-800 text-white'
+                  : 'text-white hover:bg-purple-600'
               } block px-3 py-2 rounded-md text-base font-medium flex items-center transition-colors duration-200`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {/* <item.icon className="h-5 w-5 mr-3" /> */}
               {item.name}
             </Link>
           ))}

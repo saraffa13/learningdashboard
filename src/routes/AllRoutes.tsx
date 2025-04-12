@@ -6,6 +6,7 @@ import AssessmentResult from "../pages/assessment/AssessmentResult";
 import ContentFeed from "../pages/content/ContentFeed";
 import ProfileManager from "../pages/profile/ProfileManager";
 import Layout from "../components/Layout";
+import NotFound from "../pages/error/NotFound";
 
 const AllRoutes = () => {
     const routes = createBrowserRouter([
@@ -43,6 +44,10 @@ const AllRoutes = () => {
                     element:<ProfileManager />
                 }
             ]
+        },
+        {
+            path:'*',
+            element:<NotFound />
         }
     ]);
 

@@ -15,34 +15,34 @@ const AssessmentList: React.FC = () => {
       {assessments.map((assessment) => (
         <div 
           key={assessment.id} 
-          className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+          className="bg-white border border-purple-100 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-purple-200"
         >
-          <h2 className="text-2xl font-bold mb-2">{assessment.title}</h2>
+          <h2 className="text-2xl font-bold mb-2 text-purple-900">{assessment.title}</h2>
           <p className="text-gray-600 mb-4">{assessment.description}</p>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span>Category:</span>
-              <span className="font-medium">{assessment.category}</span>
+              <span className="text-purple-600">Category:</span>
+              <span className="font-medium text-purple-800">{assessment.category}</span>
             </div>
             <div className="flex justify-between">
-              <span>Time Limit:</span>
-              <span className="font-medium">{assessment.timeLimit} minutes</span>
+              <span className="text-purple-600">Time Limit:</span>
+              <span className="font-medium text-purple-800">{assessment.timeLimit} minutes</span>
             </div>
             <div className="flex justify-between">
-              <span>Passing Score:</span>
-              <span className="font-medium">{assessment.passingScore}%</span>
+              <span className="text-purple-600">Passing Score:</span>
+              <span className="font-medium text-purple-800">{assessment.passingScore}%</span>
             </div>
           </div>
           {assessment.used ? (
             <div className="mt-4">
-              <p className="text-green-600 font-medium">
+              <p className="text-purple-600 font-medium">
                 Completed - Score: {assessment.score}%
               </p>
             </div>
           ) : (
             <button
               onClick={() => handleStartAssessment(assessment.id)}
-              className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+              className="mt-4 w-full bg-purple-700 text-white py-2 px-4 rounded-md hover:bg-purple-800 transition-colors duration-300 transform hover:scale-[1.02]"
             >
               Start Assessment
             </button>

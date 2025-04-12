@@ -36,7 +36,7 @@ const initialState: ProfileState = {
     zipCode: '',
   },
   interests: [],
-  profilePicture: 'https://microbiology.ucr.edu/sites/default/files/styles/form_preview/public/blank-profile-pic.png?itok=4teBBoet',
+  profilePicture: 'https://png.pngtree.com/png-vector/20220319/ourmid/pngtree-account-icon-profiles-and-users-vector-info-silhouette-vector-png-image_44982146.jpg',
   bio: '',
   socialLinks: {
     linkedin: '',

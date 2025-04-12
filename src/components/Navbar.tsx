@@ -3,6 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { 
   FaGraduationCap, 
   FaUser, 
+  FaBars, 
 } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
@@ -59,13 +60,18 @@ const Navbar: React.FC = () => {
                 hover:text-gray-200 hover:bg-purple-600 focus:outline-none focus:ring-2 
                 focus:ring-inset focus:ring-white"
             >
+              <FaBars className="w-6 h-6" />
               <span className="sr-only">Open main menu</span>
             </button>
           </div>
         </div>
       </div>
 
-      <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+        } sm:hidden`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
             <Link

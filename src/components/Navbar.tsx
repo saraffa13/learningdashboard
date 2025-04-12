@@ -6,6 +6,8 @@ import {
   FaBars,
 } from 'react-icons/fa';
 
+import logo from '../assets/logo.png';
+
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -27,11 +29,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="bg-purple-700 shadow-md">
-      <div className=" mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <Link to={'/'} className="text-xl font-bold text-white">Learning Dashboard</Link>
+              <Link to={'/'}>
+                <img src={logo} alt="Logo" className="h-20 w-auto" />
+              </Link>
             </div>
           </div>
 

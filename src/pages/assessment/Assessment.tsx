@@ -11,6 +11,7 @@ import {
 } from '../../store/slices/assessmentSlice';
 import { RootState } from '../../store/store';
 import { toast } from 'react-toastify';
+import { addNotification } from '../../store/slices/notificationSlice';
 
 const Assessment: React.FC = () => {
 
@@ -70,6 +71,11 @@ const Assessment: React.FC = () => {
     };
 
     dispatch(completeAssessment(result));
+    dispatch(addNotification({
+      message:`You scored ${score} in assessment ${currentAssessment.title} with id : ${assessmentId}`,
+      type:'info',
+      read:false
+    }))
     toast.success("Assignment Completed!");
     navigate(`/assessment/result/${result.id}`);
   };

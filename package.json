@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-     "install": "echo $CUSTOM_INSTALL_COMMAND && $CUSTOM_INSTALL_COMMAND"
+    "install": "echo $CUSTOM_INSTALL_COMMAND && $CUSTOM_INSTALL_COMMAND",
+    "postinstall": "npm install --legacy-peer-deps"
   },
   "eslintConfig": {
     "extends": [

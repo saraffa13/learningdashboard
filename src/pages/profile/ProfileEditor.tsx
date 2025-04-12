@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAddress, updateProfile, updateProfilePicture, updateSocialLinks } from "../../store/slices/profileSlice";
 import { useState } from "react";
 import { RootState } from "../../store/store";
+import { toast } from "react-toastify";
 
 const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
     socialLinks: { ...profile.socialLinks },
   });
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<any>({
     name: '',
     email: '',
     phone: '',
@@ -41,7 +42,7 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
 
   const validate = () => {
     let valid = true;
-    const newErrors = {
+    const newErrors:any = {
       name: '',
       email: '',
       phone: '',
@@ -71,10 +72,17 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
       valid = false;
     }
 
+    const indianPhoneRegex1 = /^\+91 [6-9]\d{9}$/;
+    const indianPhoneRegex2 = /^\+91[6-9]\d{9}$/;
+    
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
       valid = false;
+    } else if (!(indianPhoneRegex1.test(formData.phone) || indianPhoneRegex2.test(formData.phone))) {
+      newErrors.phone = 'Invalid Indian phone number';
+      valid = false;
     }
+
 
     if (!formData.bio.trim()) {
       newErrors.bio = 'Bio is required';
@@ -91,6 +99,11 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
       valid = false;
     }
     setErrors(newErrors);
+    if(!valid){
+        Object.keys(newErrors).forEach(key => {
+          if (newErrors[key]) toast.error(newErrors[key]);
+        })
+    }
     return valid;
   };
 
@@ -107,7 +120,10 @@ const ProfileEditor: React.FC<any> = ({ setIsEditing }) => {
       }));
       dispatch(updateAddress(formData.address));
       dispatch(updateSocialLinks(formData.socialLinks));
+      toast.success('Data Saved Successfully.')
       setIsEditing(false);
+    } else{
+      
     }
   };
 

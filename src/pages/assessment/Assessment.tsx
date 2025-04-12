@@ -10,6 +10,7 @@ import {
   startAssessment,
 } from '../../store/slices/assessmentSlice';
 import { RootState } from '../../store/store';
+import { toast } from 'react-toastify';
 
 const Assessment: React.FC = () => {
 
@@ -69,6 +70,7 @@ const Assessment: React.FC = () => {
     };
 
     dispatch(completeAssessment(result));
+    toast.success("Assignment Completed!");
     navigate(`/assessment/result/${result.id}`);
   };
 

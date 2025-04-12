@@ -25,9 +25,9 @@ interface ProfileState {
 }
 
 const initialState: ProfileState = {
-  name: '',
-  email: '',
-  phone: '',
+  name: 'Shivam',
+  email: 'ssaraffa786@gmail.com',
+  phone: '+91 9801966700',
   address: {
     street: '',
     city: '',
@@ -35,17 +35,17 @@ const initialState: ProfileState = {
     country: '',
     zipCode: '',
   },
-  interests: [],
+  interests: ['Coding, Singing'],
   profilePicture: 'https://png.pngtree.com/png-vector/20220319/ourmid/pngtree-account-icon-profiles-and-users-vector-info-silhouette-vector-png-image_44982146.jpg',
-  bio: '',
+  bio: 'Hi, I am Shivam, a full stack developer.',
   socialLinks: {
-    linkedin: '',
-    github: '',
-    twitter: '',
+    linkedin: 'https://www.linkedin.com/in/shivam-kumar-saraffa-66167a1b8/',
+    github: 'https://github.com/saraffa13',
+    twitter: 'https://x.com/shivam13537194',
   },
-  education: '',
-  occupation: '',
-  skills: [],
+  education: 'Nit Hamirpur',
+  occupation: 'Full Stack Developer',
+  skills: ['Reactjs, Nodejs, Mongodb'],
 };
 
 const profileSlice = createSlice({

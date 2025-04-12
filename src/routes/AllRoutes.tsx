@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "../pages/Home";
 import SkillAssessment from "../pages/assessment/SkillAssessment";
 import Assessment from "../pages/assessment/Assessment";
 import AssessmentResult from "../pages/assessment/AssessmentResult";
